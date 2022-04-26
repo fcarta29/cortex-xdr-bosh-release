@@ -1,11 +1,11 @@
 releases:
-- name: cortex-xdr-bosh-release
+- name: cortex-xdr-bosh
   version: ((release_version))
 addons:
 - name: cortex-xdr-agent-xenial
   jobs:
   - name: cortex-xdr-agent
-    release: cortex-xdr-bosh-release
+    release: cortex-xdr-bosh
     properties:
       distribution-id: ((distribution-id)) 
       distribution-server: ((distribution-server))

@@ -14,34 +14,34 @@ case $1 in
   start)
     # Ensure config file is present
     if [[ ! -f /etc/panw/cortex.conf ]]; then
-        mkdir -p /etc/panw
-        cat << EOF > /etc/panw/cortex.conf
-        --distribution-id ${DISTRIBUTION_ID}
-        --distribution-server ${DISTRIBUTION_SERVER}
-        EOF
+        sudo mkdir -p /etc/panw
+        sudo cat << EOF > /etc/panw/cortex.conf
+--distribution-id ${DISTRIBUTION_ID}
+--distribution-server ${DISTRIBUTION_SERVER}
+EOF
     fi
 
     # Install pacakge if it hasnt been installed yet
     if [[ ! -f /opt/traps/bin/cytool ]]; then
-      dpkg -i /var/vcap/packages/cortex-xdr-agent/cortex-*.deb
+      sudo dpkg -i /var/vcap/packages/cortex-xdr-agent/cortex-*.deb
     fi
 
     # Ensure all daemons are started
-    /opt/traps/bin/cytool runtime start all
+    sudo /opt/traps/bin/cytool runtime start all
 
     # The agent comprises the pmd, dypd, analyzerd and lted processes. 
     # pmd is the main process and it automatically starts/stops dypd, analyzerd and lted.
-    ps -ef | grep "pmd" | grep -v "grep" | tr -s ' ' | cut -d ' ' -f2 > ${PIDFILE}
+    sudo ps -ef | grep "pmd" | grep -v "grep" | tr -s ' ' | cut -d ' ' -f2 > ${PIDFILE}
     
     ;;
   stop)
     # Stop all daemons
-    /opt/traps/bin/cytool runtime stop all
+    sudo /opt/traps/bin/cytool runtime stop all
     
     ;;
   *)
     # Default to displaying usage information
-    /opt/traps/bin/cytool
+    sudo /opt/traps/bin/cytool
 
     ;;
 

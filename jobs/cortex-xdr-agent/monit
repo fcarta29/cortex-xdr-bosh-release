@@ -1,5 +1,5 @@
 check process cortex-xdr-agent
   with pidfile /var/vcap/sys/run/cortex-xdr-agent/pid
-  start program "/var/vcap/jobs/cortex-xdr-agent/bin/ctl start" with timeout 240 seconds
-  stop program "/var/vcap/jobs/cortex-xdr-agent/bin/ctl stop"
+  start program "sudo /var/vcap/jobs/cortex-xdr-agent/bin/ctl start" with timeout 240 seconds
+  stop program "sudo /var/vcap/jobs/cortex-xdr-agent/bin/ctl stop"
   group vcap
