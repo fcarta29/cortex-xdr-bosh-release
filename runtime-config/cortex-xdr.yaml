@@ -1,0 +1,14 @@
+releases:
+- name: cortex-xdr-bosh-release
+  version: ((release_version))
+addons:
+- name: cortex-xdr-agent-xenial
+  jobs:
+  - name: cortex-xdr-agent
+    release: cortex-xdr-bosh-release
+    properties:
+      distribution-id: ((distribution-id)) 
+      distribution-server: ((distribution-server))
+  include:
+    stemcell:
+    - os: ubuntu-xenial

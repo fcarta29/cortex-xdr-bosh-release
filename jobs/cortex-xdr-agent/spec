@@ -1,0 +1,14 @@
+---
+name: cortex-xdr-agent
+
+templates:
+  bin/ctl.erb: bin/ctl
+
+packages:
+  - cortex-xdr-agent
+
+properties:
+  distribution-id:
+    description: Distribution ID is unique customer identifier provided by vendor
+  distribution-server:
+    description: Distribution Server is endpoint provided by vendor
