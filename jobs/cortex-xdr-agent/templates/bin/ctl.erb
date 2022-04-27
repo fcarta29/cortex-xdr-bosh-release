@@ -28,6 +28,7 @@ EOF
 
     # Ensure all daemons are started
     sudo /opt/traps/bin/cytool runtime start all
+    sleep 10
 
     # The agent comprises the pmd, dypd, analyzerd and lted processes. 
     # pmd is the main process and it automatically starts/stops dypd, analyzerd and lted.
